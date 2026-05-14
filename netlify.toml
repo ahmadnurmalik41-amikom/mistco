@@ -3,13 +3,11 @@
   command = "cd client && npm install && npm run build"
   # Path to the build output
   publish = "client/dist"
-  # Path to the functions
-  functions = "server/src/functions"
 
 [functions]
-  # This tells Netlify to bundle dependencies
-  node_bundle = true
-  # Netlify needs to know where to find the server dependencies
+  # Path to the functions directory
+  directory = "server/src/functions"
+  # Modules to be excluded from bundling (optional, helps with binary/large modules)
   external_node_modules = ["mysql2", "bcryptjs", "jsonwebtoken", "multer"]
 
 [[redirects]]
