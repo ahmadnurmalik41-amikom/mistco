@@ -1,0 +1,25 @@
+[build]
+  # Build the client
+  command = "cd client && npm install && npm run build"
+  # Path to the build output
+  publish = "client/dist"
+  # Path to the functions
+  functions = "server/src/functions"
+
+[functions]
+  # This tells Netlify to bundle dependencies
+  node_bundle = true
+  # Netlify needs to know where to find the server dependencies
+  external_node_modules = ["mysql2", "bcryptjs", "jsonwebtoken", "multer"]
+
+[[redirects]]
+  # Redirect all /api requests to the Netlify function
+  from = "/api/*"
+  to = "/.netlify/functions/api"
+  status = 200
+
+[[redirects]]
+  # Support for React Router
+  from = "/*"
+  to = "/index.html"
+  status = 200

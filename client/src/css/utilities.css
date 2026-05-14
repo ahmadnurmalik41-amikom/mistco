@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-primary {
+    @apply bg-[var(--brand-accent)] text-white hover:bg-[var(--brand-accent-hover)] focus:ring-[var(--brand-accent)];
+  }
+  
+  .btn-secondary {
+    @apply bg-[var(--bg-secondary)] text-[var(--text-primary)] border border-[var(--border-color)] hover:bg-[var(--bg-tertiary)] focus:ring-[var(--border-color)];
+  }
+  
+  .btn-outline {
+    @apply border-2 border-[var(--brand-accent)] text-[var(--brand-accent)] hover:bg-[var(--brand-accent)] hover:text-white;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-lg bg-[var(--bg-primary)] border border-[var(--border-color)] text-[var(--text-primary)] transition-all duration-200 focus:outline-none focus:border-[var(--brand-accent)] focus:ring-1 focus:ring-[var(--brand-accent)];
+  }
+
+  .card {
+    @apply bg-[var(--bg-primary)] rounded-xl border border-[var(--border-color)] overflow-hidden transition-all duration-300;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+}

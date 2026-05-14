@@ -1,0 +1,21 @@
+/* Note: Mostly handled by Tailwind now, keeping this for custom responsive logic if needed */
+
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+  
+  .section {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  h1 {
+    font-size: 2.5rem !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .show-on-mobile {
+    display: none !important;
+  }
+}
