@@ -56,7 +56,7 @@ export const removeFromCart = async (id) => {
     }
   } else {
     let cart = Storage.getLocalCart();
-    cart = cart.filter(item => item.id !== id);
+    cart = cart.filter(item => item.id != id);
     Storage.setLocalCart(cart);
     return true;
   }
@@ -73,7 +73,7 @@ export const updateQuantity = async (id, quantity) => {
     }
   } else {
     const cart = Storage.getLocalCart();
-    const index = cart.findIndex(item => item.id === id);
+    const index = cart.findIndex(item => item.id == id);
     if (index > -1) {
       cart[index].quantity = quantity;
       Storage.setLocalCart(cart);

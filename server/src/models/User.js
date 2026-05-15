@@ -19,6 +19,15 @@ class User {
     const [rows] = await pool.execute('SELECT id, name, email, phone, address, role FROM users WHERE id = ?', [id]);
     return rows[0];
   }
+
+  static async update(id, userData) {
+    const { name, phone, address } = userData;
+    await pool.execute(
+      'UPDATE users SET name = ?, phone = ?, address = ? WHERE id = ?',
+      [name, phone, address, id]
+    );
+    return true;
+  }
 }
 
 export default User;

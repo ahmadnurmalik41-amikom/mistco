@@ -25,6 +25,9 @@ export default defineConfig({
         wishlist: resolve(__dirname, 'pages/wishlist.html'),
         workshirt: resolve(__dirname, 'pages/workshirt.html'),
         notFound: resolve(__dirname, 'pages/404.html'),
+        adminDashboard: resolve(__dirname, 'pages/admin-dashboard.html'),
+        adminProducts: resolve(__dirname, 'pages/admin-products.html'),
+        adminOrders: resolve(__dirname, 'pages/admin-orders.html'),
       }
     }
   },

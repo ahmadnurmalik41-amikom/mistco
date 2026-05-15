@@ -34,6 +34,19 @@ class AuthService {
     const token = generateToken({ id: user.id, role: user.role });
     return { user: userData, token };
   }
+
+  static async getProfile(userId) {
+    const user = await User.findById(userId);
+    if (!user) {
+      throw { statusCode: 404, message: 'User not found' };
+    }
+    return user;
+  }
+
+  static async updateProfile(userId, userData) {
+    await User.update(userId, userData);
+    return await User.findById(userId);
+  }
 }
 
 export default AuthService;

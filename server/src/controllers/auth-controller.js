@@ -22,8 +22,17 @@ export const login = async (req, res, next) => {
 
 export const getProfile = async (req, res, next) => {
   try {
-    // User data is attached by auth middleware
-    sendSuccess(res, 200, 'Profile retrieved successfully', req.user);
+    const user = await AuthService.getProfile(req.user.id);
+    sendSuccess(res, 200, 'Profile retrieved successfully', user);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateProfile = async (req, res, next) => {
+  try {
+    const user = await AuthService.updateProfile(req.user.id, req.body);
+    sendSuccess(res, 200, 'Profile updated successfully', user);
   } catch (error) {
     next(error);
   }

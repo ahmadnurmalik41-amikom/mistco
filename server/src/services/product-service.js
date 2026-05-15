@@ -16,6 +16,20 @@ class ProductService {
   static async searchProducts(keyword) {
     return await Product.search(keyword);
   }
+
+  static async createProduct(data) {
+    return await Product.create(data);
+  }
+
+  static async updateProduct(id, data) {
+    await this.getProductById(id); // Check if exists
+    return await Product.update(id, data);
+  }
+
+  static async deleteProduct(id) {
+    await this.getProductById(id); // Check if exists
+    return await Product.delete(id);
+  }
 }
 
 export default ProductService;

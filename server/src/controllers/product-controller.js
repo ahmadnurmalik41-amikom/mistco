@@ -27,3 +27,32 @@ export const getProductById = async (req, res, next) => {
     next(error);
   }
 };
+
+export const createProduct = async (req, res, next) => {
+  try {
+    const id = await ProductService.createProduct(req.body);
+    sendSuccess(res, 201, 'Product created successfully', { id });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await ProductService.updateProduct(id, req.body);
+    sendSuccess(res, 200, 'Product updated successfully');
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteProduct = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await ProductService.deleteProduct(id);
+    sendSuccess(res, 200, 'Product deleted successfully');
+  } catch (error) {
+    next(error);
+  }
+};

@@ -11,6 +11,11 @@ export const Storage = {
   removeUser: () => localStorage.removeItem('mist_user'),
   
   isAuthenticated: () => !!localStorage.getItem('mist_token'),
+  
+  isAdmin: () => {
+    const user = Storage.getUser();
+    return user && user.role === 'admin';
+  },
 
   // Fallback local cart if API not available
   getLocalCart: () => {

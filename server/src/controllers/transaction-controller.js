@@ -26,3 +26,23 @@ export const getTransactionById = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getAllTransactions = async (req, res, next) => {
+  try {
+    const transactions = await Transaction.findAll();
+    sendSuccess(res, 200, 'All transactions retrieved successfully', transactions);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const updateTransactionStatus = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    await Transaction.updateStatus(id, status);
+    sendSuccess(res, 200, 'Transaction status updated successfully');
+  } catch (error) {
+    next(error);
+  }
+};

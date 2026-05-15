@@ -65,6 +65,24 @@ class Transaction {
     transaction.items = itemRows;
     return transaction;
   }
+
+  static async findAll() {
+    const [rows] = await pool.execute(
+      `SELECT t.*, u.name as user_name, u.email as user_email 
+       FROM transactions t 
+       JOIN users u ON t.user_id = u.id 
+       ORDER BY t.created_at DESC`
+    );
+    return rows;
+  }
+
+  static async updateStatus(id, status) {
+    await pool.execute(
+      'UPDATE transactions SET status = ? WHERE id = ?',
+      [status, id]
+    );
+    return true;
+  }
 }
 
 export default Transaction;
